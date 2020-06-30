@@ -101,7 +101,17 @@ extension TiAdmobModule {
       PACConsentInformation.sharedInstance.debugGeography = PACDebugGeography(rawValue: newValue.intValue) ?? PACDebugGeography.disabled
     }
   }
-  
+    
+  @objc
+  public var testDeviceIdentifiers: [String] {
+      get {
+          return GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers ?? []
+      }
+      set {
+          GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = newValue
+      }
+  }
+    
   @objc(setTagForUnderAgeOfConsent:)
   public func setTagForUnderAgeOfConsent(arg: Any?) {
     if let value = arg as? NSNumber {
@@ -172,6 +182,13 @@ extension TiAdmobModule {
         callback.call([["userPrefersAdFree": NSNumber.init(value: userPrefersAdFree)]], thisObject: self)
       })
     }
+  }
+    
+  @objc(setTagForChildDirectedTreatment:)
+    public func setTagForChildDirectedTreatment(arg: Any?) {
+      if let value = arg as? NSNumber {
+        GADMobileAds.sharedInstance().requestConfiguration.tag(forChildDirectedTreatment: value.boolValue)
+      }
   }
 }
 
