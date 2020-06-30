@@ -180,11 +180,11 @@ extension TiAdmobModule {
 extension TiAdmobModule {
   @objc
   public func disableAutomatedInAppPurchaseReporting() {
-    GADMobileAds.disableAutomatedInAppPurchaseReporting()
+    GADMobileAds.sharedInstance().disableAutomatedInAppPurchaseReporting()
   }
 
   @objc
   public func disableSDKCrashReporting() {
-    GADMobileAds.disableSDKCrashReporting()
+    GADMobileAds.sharedInstance().disableSDKCrashReporting()
   }
 }
