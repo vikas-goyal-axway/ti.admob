@@ -1,7 +1,8 @@
 ---
 name: Modules.Admob.BannerView
 extends: Titanium.UI.View
-platforms: [android]
+platforms: [android,iphone,ipad]
+since: {iphone: "3.0.0", ipad: "3.0.0"}
 summary: A view for displaying ads delivered through Admob.
 createable: true
 properties:
@@ -9,12 +10,17 @@ properties:
     type: Number
     summary: size of the ad to display
     constants: Modules.Admob.AD_SIZE_*
-    platforms: [android]
     default: Modules.Admob.AD_SIZE_BANNER
+
+  - name: adUnitId
+    type: String
+    summary: Ad unit id used for displaying this banner.
+    platforms: [iphone,ipad]
 
 methods:
   - name: requestAd
     summary: Calls for a new ad if needed. Pass optional `args` to configure extras.
+    platforms: [android]
     parameters:
       - name: options
         type: Object
@@ -28,6 +34,7 @@ methods:
 
   - name: requestTestAd
     summary: Calls for a test ad if needed.
+    platforms: [android]
     returns:
       type: void
     deprecated:
@@ -54,7 +61,7 @@ events:
 
   - name: load
     summary: Fired when ad is loaded
-    platforms: [android]
+    platforms: [android,iphone,ipad]
 
   - name: ad_not_received
     summary: Fired whenever the ad was not successfully loaded
@@ -69,7 +76,7 @@ events:
 
   - name: fail
     summary: Fired whenever the ad was not successfully loaded
-    platforms: [android]
+    platforms: [android,iphone,ipad]
     properties:
       - name: errorCode
         type: Number
@@ -84,7 +91,7 @@ events:
 
   - name: close
     summary: Fired when ad is closed
-    platforms: [android]
+    platforms: [android,iphone,ipad]
 
   - name: ad_opened
     summary: Fired when ad is opened
@@ -95,7 +102,7 @@ events:
     
   - name: open
     summary: Fired when ad is opened
-    platforms: [android]
+    platforms: [android,iphone,ipad]
 
   - name: ad_left_application
     summary: User left the application through the ad
@@ -106,4 +113,4 @@ events:
 
   - name: leftapp
     summary: User left the application through the ad
-    platforms: [android]
+    platforms: [android,iphone,ipad]

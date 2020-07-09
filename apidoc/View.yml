@@ -14,8 +14,8 @@ description: |
 
     Note: Starting in 2.0.0, you just need to specify a height and an appropriate ad is selected by the Admob SDK.
 deprecated:
-  since:  {android: "4.5.0"}
-  notes: Replaced by <Modules.Admob.BannerView> on Android.
+  since:  "4.5.0"
+  notes: Replaced by <Modules.Admob.BannerView> and Modules.Admob.InterstitialAd.
 
 properties:
   - name: adSize

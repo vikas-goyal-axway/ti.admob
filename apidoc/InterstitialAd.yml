@@ -5,19 +5,22 @@ summary: Interstitial ads are full screen ads that are usually shown between nat
 createable: true
 description: |
     Starting from 4.4.0 this module now supports Interstitial ads for Android.
-
+    Starting from 3.0.0 this module now supports Interstitial ads for iPhone & iPad.
     Interstitial ads are full screen ads that are usually shown between natural steps of an application's interface flow.
     For instance doing different tasks in your application or between reading different articles.
 
     For best user experience Interstitial ads should be loaded prior showing the to the user. Interstitial ad instances can
     be used for showing one ad per loading, but they can be used multiple times. A good way of reusing an Interstitial ad is
     to show an ad, load a new after it has been closed one, and await for the proper time to show the recently loaded. 
-since: "4.4.0"
-platforms: [android]
+since: {android: "4.4.0", iphone: "3.0.0", ipad: "3.0.0"}
+platforms: [android,iphone,ipad]
 properties:
   - name: adUnitId
     type: String
     summary: Id for this add. This property can be set in the creation dictionary or after creating the Interstitial ad instance.
+  - name: isReady
+    type: Boolean
+    summary: Returns true if the interstitial is ready to be displayed.
 
 methods:
   - name: load
@@ -44,8 +47,8 @@ events:
       notes: Use `load` instead
 
   - name: load
-    summary: Fired when ad is loaded
-    platforms: [android]
+    summary: Fired when ad is loaded. [Don't use the load event to show the interstitial. This can cause a poor user experience. Instead, pre-load the ad before you need to show it. Then check the isReady flag on the interstitial to find out if it is ready to be shown.]
+    platforms: [android,iphone,ipad]
 
   - name: ad_not_received
     summary: Fired whenever the ad was not successfully loaded
@@ -60,7 +63,7 @@ events:
 
   - name: fail
     summary: Fired whenever the ad was not successfully loaded
-    platforms: [android]
+    platforms: [android,iphone,ipad]
     properties:
       - name: errorCode
         type: Number
@@ -75,7 +78,7 @@ events:
 
   - name: close
     summary: Fired when ad is closed
-    platforms: [android]
+    platforms: [android,iphone,ipad]
 
   - name: ad_opened
     summary: Fired when ad is opened
@@ -86,7 +89,7 @@ events:
     
   - name: open
     summary: Fired when ad is opened
-    platforms: [android]
+    platforms: [android,iphone,ipad]
 
   - name: ad_left_application
     summary: User left the application through the ad
@@ -97,4 +100,4 @@ events:
 
   - name: leftapp
     summary: User left the application through the ad
-    platforms: [android]
+    platforms: [android,iphone,ipad]
